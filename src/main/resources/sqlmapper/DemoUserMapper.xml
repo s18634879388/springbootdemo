@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.DemoUserMapper">
+    <resultMap type="com.demo.domain.DemoUser" id="demoUserMap">
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="last_ip" property="lastIp"/>
+        <result column="last_visit" property="lastVisit"/>
+    </resultMap>
+
+    <select id="getAllUser" resultMap="demoUserMap">
+        select * from t_user
+    </select>
+    <insert id="addUser">
+        insert into t_user(user_name,password,last_ip,last_visit) values(#{userName},#{password},#{lastIp},#{lastVisit})
+    </insert>
+</mapper>
+
