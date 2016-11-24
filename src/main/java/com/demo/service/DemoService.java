@@ -3,6 +3,7 @@ package com.demo.service;
 import com.demo.domain.DemoUser;
 import com.demo.mapper.DemoUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +38,23 @@ public class DemoService {
              ) {
             System.out.println(demouser.getUserName()+"---------------------------");
         }
+        return demoUsers;
+    }
+
+    /**
+     * 添加maven依赖
+                <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-springmvc</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+     *在启动类添加@EnableCaching注解
+     * 在需要加入缓存的地方添加@Cacheable注解
+     */
+    @Cacheable(value = "cachetest",key = "'t1'")
+    public List<DemoUser> getAllUser2() {
+        System.out.println("从数据库取出");
+        List<DemoUser> demoUsers = demoUserMapper.getAllUser();
         return demoUsers;
     }
 }

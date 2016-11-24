@@ -1,11 +1,12 @@
 package com.demo.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Administrator on 2016/11/24.
  */
-public class DemoUser {
+public class DemoUser implements Serializable{
     private int userId;
     private String userName;
     private String password;
