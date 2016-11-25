@@ -2,6 +2,7 @@ package com.demo.service;
 
 import com.demo.domain.DemoUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -32,7 +33,14 @@ public class RedisDemoService {
         demoUser.setLastVisit(new Date());
         valops.set("t2",demoUser);
     }
+
+    /**
+     *
+     * 添加缓存，键的自动生成方式为类权限定名+方法名，key的存储位置为cachetest下
+     */
+    @Cacheable(value = "cachetest",keyGenerator = "keyGenerator")
     public DemoUser getDemoUser(){
+        System.out.println("redis数据库取.........");
         return (DemoUser) valops.get("t2");
     }
 

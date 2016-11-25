@@ -25,9 +25,9 @@ public class RedisDemoController {
 
     @RequestMapping(value = "get",method = RequestMethod.GET)
     @ResponseBody
-    public String getDemoUser(){
+    public DemoUser getDemoUser(){
         DemoUser demoUser = redisDemoService.getDemoUser();
         System.out.println(demoUser.getUserName()+"============");
-        return "yes";
+        return demoUser;
     }
 }
