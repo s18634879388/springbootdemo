@@ -2,14 +2,14 @@ package com.demo.controller;
 
 import com.demo.domain.DemoUser;
 import com.demo.service.DemoService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,4 +48,18 @@ public class DemoController {
         }
         return "yes";
     }
+
+//    @RequestMapping(value = "listTest",method = RequestMethod.POST)
+//    @ResponseBody
+//    @ApiOperation(value = "test",consumes = "application/json",notes = "test")
+//    public String listTest(@RequestBody List<DemoUser> demoUsers){
+//        System.out.println(demoUsers.toString()+"=====");
+//        System.out.println(demoUsers.get(0).toString()+".........");
+//        for (DemoUser de:demoUsers
+//             ) {
+//            System.out.println("----"+de.getUserName());
+//        }
+//
+//        return "111";
+//    }
 }
