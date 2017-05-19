@@ -2,11 +2,19 @@ package com.demo.service;
 
 import com.demo.domain.DemoUser;
 import com.demo.mapper.DemoUserMapper;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.jeecgframework.poi.excel.ExcelExportUtil;
+import org.jeecgframework.poi.excel.entity.ExportParams;
+import org.jeecgframework.poi.excel.entity.enmus.ExcelType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -52,9 +60,20 @@ public class DemoService {
      * 在需要加入缓存的地方添加@Cacheable注解
      */
     @Cacheable(value = "cachetest",key = "'t1'")
-    public List<DemoUser> getAllUser2() {
+    public List<DemoUser> getAllUser2() throws IOException {
         System.out.println("从数据库取出");
+
         List<DemoUser> demoUsers = demoUserMapper.getAllUser();
+
+        ExportParams exportParams = new ExportParams("test","测试", ExcelType.XSSF);
+        Workbook workbook = ExcelExportUtil.exportExcel(exportParams,DemoUser.class,demoUsers);
+        File save = new File("d:/TestExcel/");
+        if (!save.exists()){
+            save.mkdir();
+        }
+        FileOutputStream fileOutputStream = new FileOutputStream("d:/TestExcel/myTest.xls");
+        workbook.write(fileOutputStream);
+        fileOutputStream.close();
         return demoUsers;
     }
 }

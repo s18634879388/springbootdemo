@@ -1,5 +1,7 @@
 package com.demo.domain;
 
+import org.jeecgframework.poi.excel.annotation.Excel;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,9 +9,13 @@ import java.util.Date;
  * Created by Administrator on 2016/11/24.
  */
 public class DemoUser implements Serializable{
+    @Excel(name = "用户id")
     private int userId;
+    @Excel(name = "用户名")
     private String userName;
+    @Excel(name = "密码")
     private String password;
+    @Excel(name = "最后登录ip")
     private String lastIp;
     private Date lastVisit;
 

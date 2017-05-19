@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class DemoController {
     @ApiOperation(value = "缓存例子",notes = "缓存例子")
     @RequestMapping(value = "cacheDemo",method = RequestMethod.GET)
     @ResponseBody
-    public String cacheTest(){
+    public String cacheTest() throws IOException {
         List<DemoUser> demoUsers =demoService.getAllUser2();
         for (DemoUser demoUser:demoUsers
              ) {
