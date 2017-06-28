@@ -37,8 +37,8 @@ public class DemoController {
         demoService.getAllUser();
         return "yes";
     }
-    //spring boot 加入redis缓存
-    @ApiOperation(value = "缓存例子",notes = "缓存例子")
+    //spring boot 加入redis缓存 poi操作
+    @ApiOperation(value = "缓存+poi例子",notes = "缓存+poi例子")
     @RequestMapping(value = "cacheDemo",method = RequestMethod.GET)
     @ResponseBody
     public String cacheTest() throws IOException {
@@ -46,6 +46,20 @@ public class DemoController {
         for (DemoUser demoUser:demoUsers
              ) {
             System.out.println(demoUser.getUserName()+"===============");
+        }
+        return "yes";
+    }
+    //spring boot 加入redis缓存
+    @ApiOperation(value = "缓存例子",notes = "缓存例子")
+    @RequestMapping(value = "cacheDemo2",method = RequestMethod.GET)
+    @ResponseBody
+    public String cacheTest2() throws IOException {
+        List<DemoUser> demoUsers =demoService.getAllUser3();
+        int i = 0;
+        for (DemoUser demoUser:demoUsers
+                ) {
+            i++;
+            System.out.println(demoUser.getUserName()+"==============="+i);
         }
         return "yes";
     }

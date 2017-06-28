@@ -7,6 +7,7 @@ import org.jeecgframework.poi.excel.ExcelExportUtil;
 import org.jeecgframework.poi.excel.entity.ExportParams;
 import org.jeecgframework.poi.excel.entity.enmus.ExcelType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,6 +75,12 @@ public class DemoService {
         FileOutputStream fileOutputStream = new FileOutputStream("d:/TestExcel/myTest.xls");
         workbook.write(fileOutputStream);
         fileOutputStream.close();
+        return demoUsers;
+    }
+    @Cacheable(value = "cachetest",key = "'t1'")
+    public List<DemoUser> getAllUser3() {
+        System.out.println("从数据库取出");
+        List<DemoUser> demoUsers = demoUserMapper.getAllUser();
         return demoUsers;
     }
 }

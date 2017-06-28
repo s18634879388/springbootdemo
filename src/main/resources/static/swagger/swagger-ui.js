@@ -278,12 +278,12 @@ this["Handlebars"] = this["Handlebars"] || {};
 this["Handlebars"]["templates"] = this["Handlebars"]["templates"] || {};
 this["Handlebars"]["templates"]["apikey_button_view"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<!--templates.img-->\n<div class='auth_containertemplates.imgd='apikey_container'>\n  <div class='key_input_container'>\n    <div class='auth_label'><label for='input_apiKey_entry'>"
+  return "<!--div class='auth_button' id='apikey_button'><img class='auth_icon' alt='apply api key' src='images/apikey.jpeg'></div-->\n<div class='auth_container' id='apikey_container'>\n  <div class='key_input_container'>\n    <div class='auth_label'><label for='input_apiKey_entry'>"
     + escapeExpression(((helper = (helper = helpers.keyName || (depth0 != null ? depth0.keyName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"keyName","hash":{},"data":data}) : helper)))
     + "</label></div>\n    <input placeholder='api_key' class='auth_input' id='input_apiKey_entry' name='apiKey' type='text'/>\n    <div class='auth_submit'><a class='auth_submit_button' id='apply_api_key' href='#' data-sw-translate>apply</a></div>\n  </div>\n</div>\n";
 },"useData":true});
 this["Handlebars"]["templates"]["basic_auth_button_view"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class='auth_button' id='basic_auth_button'><img class='auth_icon' src='images/password.jpeg'></div>\n<div class='auth_container' id='basic_auth_contemplates.imgner'>\n  <div class='key_input_container'>\n    <div class=\"auth_label\"><label for=\"input_username\" data-sw-translate>Username</label></div>\n    <input placeholder=\"username\" class=\"auth_input\" id=\"input_username\" name=\"username\" type=\"text\"/>\n    <div class=\"auth_label\"><label for=\"password\" data-sw-translate>Password</label></div>\n    <input placeholder=\"password\" class=\"auth_input\" id=\"input_password\" name=\"password\" type=\"password\"/>\n    <div class='auth_submit'><a class='auth_submit_button' id=\"apply_basic_auth\" href=\"#\">apply</a></div>\n  </div>\n</div>\n\n";
+  return "<div class='auth_button' id='basic_auth_button'><img class='auth_icon' src='images/password.jpeg'></div>\n<div class='auth_container' id='basic_auth_container'>\n  <div class='key_input_container'>\n    <div class=\"auth_label\"><label for=\"input_username\" data-sw-translate>Username</label></div>\n    <input placeholder=\"username\" class=\"auth_input\" id=\"input_username\" name=\"username\" type=\"text\"/>\n    <div class=\"auth_label\"><label for=\"password\" data-sw-translate>Password</label></div>\n    <input placeholder=\"password\" class=\"auth_input\" id=\"input_password\" name=\"password\" type=\"password\"/>\n    <div class='auth_submit'><a class='auth_submit_button' id=\"apply_basic_auth\" href=\"#\">apply</a></div>\n  </div>\n</div>\n\n";
   },"useData":true});
 this["Handlebars"]["templates"]["content_type"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var stack1, buffer = "";
@@ -637,7 +637,7 @@ this["Handlebars"]["templates"]["main"] = Handlebars.template({"1":function(dept
     + "/debug?url="
     + escapeExpression(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"url","hash":{},"data":data}) : helper)))
     + "\"><img id=\"validator\" src=\""
-    + escapeExpression(((helper = (helper = helpers.validatorUrl || (depthtemplates.img= null ? depth0.validatorUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"validatorUrl","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helper = (helper = helpers.validatorUrl || (depth0 != null ? depth0.validatorUrl : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"validatorUrl","hash":{},"data":data}) : helper)))
     + "?url="
     + escapeExpression(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"url","hash":{},"data":data}) : helper)))
     + "\"></a>\n    </span>\n";
@@ -1908,7 +1908,7 @@ var simpleRef = module.exports.simpleRef = function (name) {
 var helpers = require('./helpers');
 var jQuery = require('jquery');
 var request = require('superagent');
-var jsyaml = require('templates.js-yaml');
+var jsyaml = require('js-yaml');
 var _ = {
   isObject: require('lodash-compat/lang/isObject')
 };
@@ -3950,8 +3950,8 @@ var _ = {
   isString: require('lodash-compat/lang/isString'),
 };
 
-var SchemaMarkup = require('../schema-markup.templates.js');
-var jsyaml = require('templates.js-yaml');
+var SchemaMarkup = require('../schema-markup.js');
+var jsyaml = require('js-yaml');
 
 var Model = module.exports = function (name, definition, models, modelPropertyMacro) {
   this.definition = definition || {};
@@ -4956,13 +4956,13 @@ OperationGroup.prototype.sort = function () {
 
 },{}],13:[function(require,module,exports){
 /*!
- * The buffer module from node.templates.js, for the browser.
+ * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
  * @license  MIT
  */
 
-var base64 = require('base64-templates.js')
+var base64 = require('base64-js')
 var ieee754 = require('ieee754')
 var isArray = require('is-array')
 
@@ -6246,11 +6246,11 @@ Buffer._augment = function _augment (arr) {
 var INVALID_BASE64_RE = /[^+\/0-9A-z\-]/g
 
 function base64clean (str) {
-  // Node strips out invalid characters like \n and \t from the string, base64-templates.js does not
+  // Node strips out invalid characters like \n and \t from the string, base64-js does not
   str = stringtrim(str).replace(INVALID_BASE64_RE, '')
   // Node converts strings with length < 2 to ''
   if (str.length < 2) return ''
-  // Node allows for non-padded base64 strings (missing trailing ===), base64-templates.js does not
+  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
   while (str.length % 4 !== 0) {
     str = str + '='
   }
@@ -6990,7 +6990,7 @@ process.umask = function() { return 0; };
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
- * Includes Sizzle.templates.js
+ * Includes Sizzle.js
  * http://sizzlejs.com/
  *
  * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors
@@ -7006,7 +7006,7 @@ process.umask = function() { return 0; };
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
 		// For environments that do not have a `window` with a `document`
-		// (such as Node.templates.js), expose a factory as module.exports.
+		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
 		// See ticket #14549 for more info.
@@ -7318,7 +7318,7 @@ jQuery.extend({
 		}
 	},
 
-	// Convert dashed to camelCase; used by the templates.css and data modules
+	// Convert dashed to camelCase; used by the css and data modules
 	// Support: IE9-11+
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
@@ -11574,11 +11574,11 @@ jQuery.event = {
 
 	special: {
 		load: {
-			// Prevent triggered img.load events from bubbling to window.load
+			// Prevent triggered image.load events from bubbling to window.load
 			noBubble: true
 		},
 		focus: {
-			// Fire native event templates.imgpossible so blur/focus sequence is correct
+			// Fire native event if possible so blur/focus sequence is correct
 			trigger: function() {
 				if ( this !== safeActiveElement() && this.focus ) {
 					this.focus();
@@ -12545,7 +12545,7 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 
 	// Support: IE9
-	// getPropertyValue is only needed for .templates.css('filter') (#12537)
+	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 	}
@@ -12643,7 +12643,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 		docElem.removeChild( container );
 	}
 
-	// Support: node.templates.js jsdom
+	// Support: node.js jsdom
 	// Don't assume that getComputedStyle is a property of the global object
 	if ( window.getComputedStyle ) {
 		jQuery.extend( support, {
@@ -12730,7 +12730,7 @@ var
 
 	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
 
-// Return a templates.css property mapped to a potentially vendor prefixed property
+// Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( style, name ) {
 
 	// Shortcut for names that are not vendor prefixed
@@ -12812,7 +12812,7 @@ function getWidthOrHeight( elem, name, extra ) {
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
 	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
 	if ( val <= 0 || val == null ) {
-		// Fall back to computed then uncomputed templates.css if necessary
+		// Fall back to computed then uncomputed css if necessary
 		val = curCSS( elem, name, styles );
 		if ( val < 0 || val == null ) {
 			val = elem.style[ name ];
@@ -13203,7 +13203,7 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// Passing an empty string as a 3rd parameter to .templates.css will automatically
+			// Passing an empty string as a 3rd parameter to .css will automatically
 			// attempt a parseFloat and fallback to a string if the parse fails.
 			// Simple values such as "10px" are parsed to Float;
 			// complex values such as "rotate(1rad)" are returned as-is.
@@ -13273,7 +13273,7 @@ var
 				maxIterations = 20;
 
 			if ( start && start[ 3 ] !== unit ) {
-				// Trust units reported by jQuery.templates.css
+				// Trust units reported by jQuery.css
 				unit = unit || start[ 3 ];
 
 				// Make sure we update the tween properties later on
@@ -14544,7 +14544,7 @@ var
 	rurl = /^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,
 
 	/* Prefilters
-	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.templates.js for an example)
+	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
 	 * 2) These are called:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
@@ -16073,7 +16073,7 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 // Blink bug: https://code.google.com/p/chromium/issues/detail?id=229280
 // getComputedStyle returns percent when specified for top/left/bottom/right;
-// rather than make the templates.css module depend on the offset module, just check for it here
+// rather than make the css module depend on the offset module, just check for it here
 jQuery.each( [ "top", "left" ], function( i, prop ) {
 	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
 		function( elem, computed ) {
@@ -16201,7 +16201,7 @@ return jQuery;
 'use strict';
 
 
-var yaml = require('./lib/templates.js-yaml.templates.js');
+var yaml = require('./lib/js-yaml.js');
 
 
 module.exports = yaml;
@@ -18980,7 +18980,7 @@ module.exports = new Schema({
 // It is not described in the YAML specification.
 //
 // This schema is based on JS-YAML's default safe schema and includes
-// JavaScript-specific types: !!templates.js/undefined, !!templates.js/regexp and !!templates.js/function.
+// JavaScript-specific types: !!js/undefined, !!js/regexp and !!js/function.
 //
 // Also this schema is used as default base schema at `Schema.create` function.
 
@@ -18996,9 +18996,9 @@ module.exports = Schema.DEFAULT = new Schema({
     require('./default_safe')
   ],
   explicit: [
-    require('../type/templates.js/undefined'),
-    require('../type/templates.js/regexp'),
-    require('../type/templates.js/function')
+    require('../type/js/undefined'),
+    require('../type/js/regexp'),
+    require('../type/js/function')
   ]
 });
 
@@ -19618,7 +19618,7 @@ var esprima;
 
 // Browserified version does not have esprima
 //
-// 1. For node.templates.js just require module as deps
+// 1. For node.js just require module as deps
 // 2. For browser try to require mudule via external AMD system.
 //    If not found - try to fallback to window.esprima. If not
 //    found too - then fail to parse.
@@ -19691,7 +19691,7 @@ function isFunction(object) {
   return '[object Function]' === Object.prototype.toString.call(object);
 }
 
-module.exports = new Type('tag:yaml.org,2002:templates.js/function', {
+module.exports = new Type('tag:yaml.org,2002:js/function', {
   kind: 'scalar',
   resolve: resolveJavascriptFunction,
   construct: constructJavascriptFunction,
@@ -19777,7 +19777,7 @@ function isRegExp(object) {
   return '[object RegExp]' === Object.prototype.toString.call(object);
 }
 
-module.exports = new Type('tag:yaml.org,2002:templates.js/regexp', {
+module.exports = new Type('tag:yaml.org,2002:js/regexp', {
   kind: 'scalar',
   resolve: resolveJavascriptRegExp,
   construct: constructJavascriptRegExp,
@@ -19807,7 +19807,7 @@ function isUndefined(object) {
   return 'undefined' === typeof object;
 }
 
-module.exports = new Type('tag:yaml.org,2002:templates.js/undefined', {
+module.exports = new Type('tag:yaml.org,2002:js/undefined', {
   kind: 'scalar',
   resolve: resolveJavascriptUndefined,
   construct: constructJavascriptUndefined,
@@ -20190,7 +20190,7 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
 (function (root, factory) {
     'use strict';
 
-    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.templates.js,
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js,
     // Rhino, and plain browser loading.
 
     /* istanbul ignore next */
@@ -30367,7 +30367,7 @@ Request.prototype.query = function(val){
  * Write the field `name` and `val` for "multipart/form-data"
  * request bodies.
  *
- * ``` templates.js
+ * ``` js
  * request.post('/upload')
  *   .field('foo', 'bar')
  *   .end(callback);
@@ -30389,7 +30389,7 @@ Request.prototype.field = function(name, val){
  * Queue the given `file` as an attachment to the specified `field`,
  * with optional `filename`.
  *
- * ``` templates.js
+ * ``` js
  * request.post('/upload')
  *   .attach(new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
  *   .end(callback);
@@ -31881,7 +31881,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       pre = $('<img>').attr('src', url);
 
     // Audio
-    } else if (/^audio\//.test(contentType) && supportsAudioPlaytemplates.imgk(contentType)) {
+    } else if (/^audio\//.test(contentType) && supportsAudioPlayback(contentType)) {
       pre = $('<audio controls>').append($('<source>').attr('src', url).attr('type', contentType));
 
     // Download
