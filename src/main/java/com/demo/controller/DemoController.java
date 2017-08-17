@@ -77,4 +77,16 @@ public class DemoController {
 //
 //        return "111";
 //    }
+
+    /**
+     *
+     * @return
+     */
+    @ApiOperation(value = "demoUser4",notes = "demoUser4",position = 2)
+    @RequestMapping(value = "demouser4",method = RequestMethod.GET)
+    @ResponseBody
+    public String demoUser4(){
+        demoService.getAllUser4();
+        return "yes";
+    }
 }

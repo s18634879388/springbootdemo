@@ -83,4 +83,14 @@ public class DemoService {
         List<DemoUser> demoUsers = demoUserMapper.getAllUser();
         return demoUsers;
     }
+
+    public List<DemoUser> getAllUser4(){
+        List<DemoUser> demoUsers = demoUserMapper.getAllUser();
+        for (DemoUser demouser:demoUsers
+                ) {
+            System.out.println(demouser.getUserName()+"---------------------------");
+        }
+        return demoUsers;
+    }
+
 }

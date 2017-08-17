@@ -23,8 +23,8 @@ public class MyMybatisConfig {
     private String typeAliasesPackage;
     @Value("${mybatis.mapperLocations}")
     private String mapperLocations;
-    @Value("${mybatis.configLocation}")
-    private String configLocation;
+//    @Value("${mybatis.configLocation}")
+//    private String configLocation;
 
     @Autowired
     @Qualifier("myDatasource")
@@ -39,7 +39,7 @@ public class MyMybatisConfig {
             sqlSessionFactoryBean.setDataSource(dataSource);
             sqlSessionFactoryBean.setTypeAliasesPackage(typeAliasesPackage);
             sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));
-            sqlSessionFactoryBean.setConfigLocation(new DefaultResourceLoader().getResource(configLocation));
+//            sqlSessionFactoryBean.setConfigLocation(new DefaultResourceLoader().getResource(configLocation));
             SqlSessionFactory sqlSessionFactory =null;
             try {
                 sqlSessionFactory = sqlSessionFactoryBean.getObject();
@@ -61,10 +61,10 @@ public class MyMybatisConfig {
         return sqlSessionTemplate;
     }
 
-    @Bean
-    public DemoUserMapper demoUserMapper(){
-        return sqlSessionTemplate.getMapper(DemoUserMapper.class);
-    }
+//    @Bean
+//    public DemoUserMapper demoUserMapper(){
+//        return sqlSessionTemplate.getMapper(DemoUserMapper.class);
+//    }
 
 
 }
