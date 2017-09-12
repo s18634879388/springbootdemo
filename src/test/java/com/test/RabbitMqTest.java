@@ -2,6 +2,7 @@ package com.test;
 
 import com.demo.Application;
 import com.demo.controller.RabbitMqController;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -24,9 +25,12 @@ public class RabbitMqTest {
     @Autowired
     private RabbitMqController rabbitMqController;
     @Test
-    public void send(){
+    public void send() throws JsonProcessingException {
         rabbitMqController.send();
     }
 
-
+    @Test
+    public void receive(){
+        System.out.println("receive--------");
+    }
 }

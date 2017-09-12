@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by shixiaoqi on 2017/9/6.
- */
+// */
 @Component
-@RabbitListener(queues = "test.topic.message")
 public class RabbitReceive {
+    @RabbitListener(queues = "guoan_event")
     @RabbitHandler
     public void receive(String message, Channel channel){
         System.out.println("receive--->"+message);
