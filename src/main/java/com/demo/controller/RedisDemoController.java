@@ -30,4 +30,14 @@ public class RedisDemoController {
         System.out.println(demoUser.getUserName()+"============");
         return demoUser;
     }
+    @RequestMapping(value = "token-test",method = RequestMethod.GET)
+    @ResponseBody
+    public String test(){
+        return redisDemoService.test();
+    }
+    @RequestMapping(value = "token-test-get",method = RequestMethod.GET)
+    @ResponseBody
+    public String testGet(){
+        return redisDemoService.testGet();
+    }
 }

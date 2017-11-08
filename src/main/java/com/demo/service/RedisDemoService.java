@@ -3,6 +3,7 @@ package com.demo.service;
 import com.demo.domain.DemoUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -44,4 +45,19 @@ public class RedisDemoService {
         return (DemoUser) valops.get("t2");
     }
 
+    public String test() {
+        HashOperations h = redisTemplate.opsForHash();
+        h.put("test.token","admin1","111111");
+        h.put("test.token","admin2","222222");
+        h.put("test.token","admin3","333333");
+        return "yes";
+    }
+
+    public String testGet() {
+        HashOperations h = redisTemplate.opsForHash();
+        System.out.println(h.get("test.token","admin1"));
+        System.out.println(h.get("test.token","admin2"));
+        System.out.println(h.get("test.token","admin3"));
+        return "yes";
+    }
 }
