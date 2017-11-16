@@ -25,3 +25,10 @@ spring:
 mybatis:
   typeAliasesPackage: com.demo
   mapperLocations: classpath:/sqlmapper/*.xml
+security:
+  user:
+    name: admin
+    password: admin
+
+my:
+  config: hehehe

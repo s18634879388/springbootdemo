@@ -1,12 +1,12 @@
 package com.demo.controller;
 
 import com.demo.config.RequestUtils;
+import com.demo.domain.DemoUser;
+import com.demo.domain.DemoUser1;
+import com.sun.org.glassfish.gmbal.ParameterNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +39,13 @@ public class FreeMarkerDemoController {
         model.addAttribute("list1",list1);
         return "index";
     }
+
+    @RequestMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
+
+
     @RequestMapping(value = "/freeMarkerLocation",method = RequestMethod.POST)
     @ResponseBody
     public String freeMarkerLocation(@RequestParam(value = "id") String id, HttpServletRequest request){
