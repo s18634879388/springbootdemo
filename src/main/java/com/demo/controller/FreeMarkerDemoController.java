@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import com.demo.config.RequestUtils;
 import com.demo.domain.DemoUser;
-import com.demo.domain.DemoUser1;
 import com.sun.org.glassfish.gmbal.ParameterNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

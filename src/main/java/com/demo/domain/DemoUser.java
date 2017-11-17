@@ -4,6 +4,7 @@ import org.jeecgframework.poi.excel.annotation.Excel;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/24.
@@ -18,6 +19,7 @@ public class DemoUser implements Serializable{
     @Excel(name = "最后登录ip")
     private String lastIp;
     private Date lastVisit;
+    private List<Role> roles;
 
     public int getUserId() {
         return userId;
@@ -57,5 +59,13 @@ public class DemoUser implements Serializable{
 
     public void setLastVisit(Date lastVisit) {
         this.lastVisit = lastVisit;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

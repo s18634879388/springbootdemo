@@ -9,6 +9,10 @@
         <result column="password" property="password"/>
         <result column="last_ip" property="lastIp"/>
         <result column="last_visit" property="lastVisit"/>
+        <collection property="roles" ofType="com.demo.domain.Role">
+            <result property="id" column="id"/>
+            <result property="roleName" column="role_name"/>
+        </collection>
     </resultMap>
 
     <select id="getAllUser" resultMap="demoUserMap">
@@ -17,5 +21,9 @@
     <insert id="addUser">
         insert into t_user(user_name,password,last_ip,last_visit) values(#{userName},#{password},#{lastIp},#{lastVisit})
     </insert>
+
+    <select id="getDemoUserByName" resultMap="demoUserMap">
+        SELECT * from t_user inner join user_role on t_user.user_id = user_role.t_user_id inner join role on user_role.role_id=role.id where user_name = #{0}
+    </select>
 </mapper>
 
