@@ -32,3 +32,7 @@ security:
 
 my:
   config: hehehe
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
